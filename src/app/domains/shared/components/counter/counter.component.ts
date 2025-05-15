@@ -26,6 +26,11 @@ export class CounterComponent {
     console.log('ngOnChanges');
     console.log('-'.repeat(20));
     console.log('changes', changes);
+
+    const duration = changes['duration'];
+    if (duration && duration.currentValue !== duration.previousValue) {
+      this.doSomething();
+    }
   }
 
   ngOnInit() {
@@ -51,5 +56,9 @@ export class CounterComponent {
     // POR EJEMPLO CON UN IF EN EL HTML
     console.log('ngOnDestroy');
     console.log('-'.repeat(20));
+  }
+
+  doSomething() {
+    console.log('change duration');
   }
 }
