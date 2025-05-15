@@ -2,4 +2,7 @@
     <img [src]="img" height="640" width="640" alt="random image">
     <h3>{{title}}</h3>
     <p>{{price | currency}}</p>
+    <button (click)="addToCartHandler()">
+        Add to cart
+    </button>
 </div>
