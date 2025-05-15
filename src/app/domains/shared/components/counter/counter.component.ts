@@ -14,6 +14,9 @@ export class CounterComponent {
   constructor() {
     // NO METODOS ASINCRONOS
     // SE EJECUTA ANTES DE QUE SE RENDERICE EL COMPONENTE
+    // SOLO CORRE UNA VEZ
+
+    // SI SE DESTRUYE VUELVE A CORRER
     console.log('constructor');
     console.log('-'.repeat(20));
   }
@@ -23,5 +26,30 @@ export class CounterComponent {
     console.log('ngOnChanges');
     console.log('-'.repeat(20));
     console.log('changes', changes);
+  }
+
+  ngOnInit() {
+    // DESPUESS DEL RENDERIZADO DEL COMPONENTE
+    // SOLO CORRE UNA VEZ
+    // SE PUEDE UTILIZAR ASINCRONO: async, then, await, subs
+    console.log('ngOnInit');
+    console.log('-'.repeat(20));
+    console.log('duration =>', this.duration);
+    console.log('message =>', this.message);
+  }
+
+  ngAfterViewInit() {
+    // DESPUES DEL ngOnInit
+    // DESPUES DEL RENDERIZADO
+    // SI LOS HIJOS DE ESTE COMPONENT YA FUERON RENDERIZADOS
+    console.log('ngAfterViewInit');
+    console.log('-'.repeat(20));
+  }
+
+  ngOnDestroy() {
+    // CUANDO EL COMPONENTE SE DESTRUYE
+    // POR EJEMPLO CON UN IF EN EL HTML
+    console.log('ngOnDestroy');
+    console.log('-'.repeat(20));
   }
 }
