@@ -1,5 +1,8 @@
 <div>
     <div #audioWave>
-
     </div>
+    <button (click)="playPause()">
+        @if (isPlaying()) { Pause }
+        @else { Play }
+    </button>
 </div>

@@ -1,7 +1,13 @@
-<p>
-    <input type="number" [value]="duration()" (change)="changeDuration($event)" />
-</p>
-<p>
-    <input type="text" [value]="message()" (change)="changeMessage($event)" />
-</p>
-<app-counter [duration]="duration()" [message]="message()" *ngIf="duration() > 0" />
+<div class="px-10">
+    <h1 class="text-lg font-bold">About</h1>
+    <p class="text-xs">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, earum totam eos eum repudiandae
+        non corrupti
+        corporis quasi ex quis id consequatur nulla veritatis sit est? Quibusdam nesciunt dolor natus!</p>
+    <p class="text-sm">
+        Numero de clientes <app-counter [duration]="duration()" [message]="message()" *ngIf="duration() > 0" />
+    </p>
+    <div>
+        <app-wave-audio audioUrl="audio/SoundHelix-Song-1.mp3" />
+        <!-- <app-wave-audio audioUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" /> -->
+    </div>
+</div>
