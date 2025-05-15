@@ -1,4 +1,12 @@
-import { Component, Input, signal, SimpleChanges } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  Component,
+  Inject,
+  Input,
+  PLATFORM_ID,
+  signal,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -13,7 +21,7 @@ export class CounterComponent {
   counter = signal(0);
   counterRef: number | undefined;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     // NO METODOS ASINCRONOS
     // SE EJECUTA ANTES DE QUE SE RENDERICE EL COMPONENTE
     // SOLO CORRE UNA VEZ
@@ -44,10 +52,12 @@ export class CounterComponent {
     console.log('duration =>', this.duration);
     console.log('message =>', this.message);
 
-    this.counterRef = window.setInterval(() => {
-      console.log('run interval');
-      this.counter.update((statePrev) => statePrev + 1);
-    }, 1000);
+    if (isPlatformBrowser(this.platformId)) {
+      this.counterRef = window.setInterval(() => {
+        console.log('run interval');
+        this.counter.update((statePrev) => statePrev + 1);
+      }, 1000);
+    }
   }
 
   ngAfterViewInit() {
@@ -63,7 +73,9 @@ export class CounterComponent {
     // POR EJEMPLO CON UN IF EN EL HTML
     console.log('ngOnDestroy');
     console.log('-'.repeat(20));
-    window.clearInterval(this.counterRef);
+    if (isPlatformBrowser(this.platformId)) {
+      window.clearInterval(this.counterRef);
+    }
   }
 
   doSomething() {
