@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
 export class ProductComponent {
-  img = 'https://picsum.photos/640/640?r=' + Math.random();
+  @Input() img: string = '';
+  @Input() price: number = 0;
+  @Input() title: string = '';
 }
