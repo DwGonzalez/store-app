@@ -52,12 +52,12 @@ export class CounterComponent {
     console.log('duration =>', this.duration);
     console.log('message =>', this.message);
 
-    if (isPlatformBrowser(this.platformId)) {
-      this.counterRef = window.setInterval(() => {
-        console.log('run interval');
-        this.counter.update((statePrev) => statePrev + 1);
-      }, 1000);
-    }
+    // if (isPlatformBrowser(this.platformId)) {
+    this.counterRef = window.setInterval(() => {
+      console.log('run interval');
+      this.counter.update((statePrev) => statePrev + 1);
+    }, 1000);
+    // }
   }
 
   ngAfterViewInit() {
@@ -73,9 +73,9 @@ export class CounterComponent {
     // POR EJEMPLO CON UN IF EN EL HTML
     console.log('ngOnDestroy');
     console.log('-'.repeat(20));
-    if (isPlatformBrowser(this.platformId)) {
-      window.clearInterval(this.counterRef);
-    }
+    // if (isPlatformBrowser(this.platformId)) {
+    window.clearInterval(this.counterRef);
+    // }
   }
 
   doSomething() {
