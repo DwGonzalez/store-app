@@ -6,7 +6,7 @@ import { Product } from '@shared/models/product.model';
   providedIn: 'root',
 })
 export class ProductService {
-  url = 'https://api.escuelajs.co/api/v1/products';
+  url = 'https://api.escuelajs.co/api/v1/products/';
 
   private http = inject(HttpClient);
 
@@ -14,5 +14,9 @@ export class ProductService {
 
   getProducts() {
     return this.http.get<Product[]>(this.url);
+  }
+
+  getProduct(id: number) {
+    return this.http.get<Product>(this.url + id);
   }
 }
