@@ -72,7 +72,6 @@ export class ListComponent {
   }
 
   addToCart(product: Product) {
-    // this.cart.update((prevState) => [...prevState, product]);
     this.cartService.addToCart(product);
   }
 }
