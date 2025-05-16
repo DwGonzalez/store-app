@@ -22,4 +22,9 @@ export class HeaderComponent {
     this.hideSideMenu.update((prevState) => !prevState);
     console.log('toggleSideMenu', this.hideSideMenu());
   }
+
+  removeFromCart(product: Product) {
+    console.log(product);
+    this.cartService.removeFromCart(product);
+  }
 }

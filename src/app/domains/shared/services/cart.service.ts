@@ -14,4 +14,10 @@ export class CartService {
   addToCart(product: Product) {
     this.cart.update((prevState) => [...prevState, product]);
   }
+
+  removeFromCart(product: Product) {
+    this.cart.update((products) =>
+      this.cart().filter((pro) => pro.id !== product.id)
+    );
+  }
 }

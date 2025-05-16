@@ -45,7 +45,7 @@
                 <p class="text-xs italic font-semibold">{{item.title}}</p>
                 <p class="text-sm">{{item.price | currency}}</p>
             </div>
-            <button class="text-red-600">
+            <button class="text-red-600" (click)="removeFromCart(item)">
                 <svg fill="currentColor" class="w-6 h-6" viewBox="-7.29 0 122.88 122.88" version="1.1" id="Layer_1"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                     style="enable-background:new 0 0 108.29 122.88" xml:space="preserve">
