@@ -1,9 +1,9 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '@shared/models/product.model';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../../../shared/services/cart.service';
-import { ProductService } from '../../../shared/services/product.service';
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
 
 @Component({
   selector: 'app-list',

@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { Product } from '../../models/product.model';
-import { CartService } from '../../services/cart.service';
+import { Product } from '@shared/models/product.model';
+import { CartService } from '@shared/services/cart.service';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({

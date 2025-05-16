@@ -19,10 +19,11 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@shared/*": ["./src/app/domains/shared/*"],
+      "@/*": ["./src/app/domains/*"] // esto hace que se pueda utilizar /@ para tener path aliases a todos los 'domains' de forma automática.
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
