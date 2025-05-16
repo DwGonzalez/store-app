@@ -1,20 +1,29 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  Input,
+  signal,
+  SimpleChanges,
+} from '@angular/core';
 import { ProductComponent } from '../../components/product/product.component';
 import { Product } from '@shared/models/product.model';
-import { CommonModule } from '@angular/common';
 import { CartService } from '@shared/services/cart.service';
 import { ProductService } from '@shared/services/product.service';
 import { CategoryService } from '@shared/services/category.service';
 import { Category } from '@shared/models/category.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [ProductComponent, CommonModule],
+  imports: [ProductComponent, RouterLink],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
 export class ListComponent {
+  @Input() category_id?: number;
+
   products = signal<Product[]>([]);
   categories = signal<Category[]>([]);
 
@@ -24,11 +33,12 @@ export class ListComponent {
   private productService = inject(ProductService);
   private categoryService = inject(CategoryService);
 
-  constructor() {}
-
   ngOnInit() {
-    this.getProducts();
     this.getCategories();
+  }
+
+  ngOnChanges() {
+    this.getProducts();
   }
 
   addToCart(product: Product) {
@@ -36,7 +46,7 @@ export class ListComponent {
   }
 
   private getProducts() {
-    this.productService.getProducts().subscribe({
+    this.productService.getProducts(this.category_id).subscribe({
       next: (products) => {
         this.products.set(products);
       },
