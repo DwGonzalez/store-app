@@ -2,11 +2,12 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { Product } from '@shared/models/product.model';
 import { CartService } from '@shared/services/cart.service';
 import { CurrencyPipe } from '@angular/common';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLinkWithHref],
   templateUrl: './header.component.html',
 })
 export class HeaderComponent {
