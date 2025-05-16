@@ -15,6 +15,7 @@ export class ProductDetailComponent {
   @Input() id?: number;
 
   product = signal<Product | null>(null);
+  cover = signal('');
 
   private productService = inject(ProductService);
   private cartService = inject(CartService);
@@ -24,6 +25,9 @@ export class ProductDetailComponent {
       this.productService.getProduct(this.id).subscribe({
         next: (product) => {
           this.product.set(product);
+          if (product.images.length > 0) {
+            this.cover.set(product.images[0]);
+          }
         },
       });
     }
@@ -33,5 +37,9 @@ export class ProductDetailComponent {
     if (this.product()) {
       this.cartService.addToCart(this.product()!);
     }
+  }
+
+  changeCover(newImage: string) {
+    this.cover.set(newImage);
   }
 }
