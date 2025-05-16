@@ -34,8 +34,9 @@ export class ProductDetailComponent {
   }
 
   addToCartHandler() {
-    if (this.product()) {
-      this.cartService.addToCart(this.product()!);
+    const product = this.product();
+    if (product) {
+      this.cartService.addToCart(product);
     }
   }
 
