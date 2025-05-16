@@ -16,8 +16,6 @@ export class ProductComponent {
 
   addToCartHandler() {
     console.log('addToCartHandler');
-    this.addToCart.emit(
-      'hola este es un msg desde el hijo ' + this.product.title
-    );
+    this.addToCart.emit(this.product);
   }
 }
