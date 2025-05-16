@@ -55,10 +55,10 @@
             </button>
         </div>
         }
-        @if(cartTotal() !== 0) {
+        @if(total() !== 0) {
         <div class="flex justify-around items-center not-last:border-b-1 border-gray-300 py-2">
             <p>Total: </p>
-            <span>{{cartTotal() | currency}}</span>
+            <span>{{total() | currency}}</span>
         </div>
         }
 

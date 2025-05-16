@@ -12,11 +12,21 @@ import { CurrencyPipe } from '@angular/common';
 export class HeaderComponent {
   hideSideMenu = signal(true);
 
+  /* FORMA DE INJECT */
   private cartService = inject(CartService);
   cart = computed(() => this.cartService.cart());
-  cartTotal = computed(() =>
-    this.cart().reduce((total, product) => total + product.price, 0)
-  );
+  total = computed(() => this.cartService.total());
+  /* FORMA DE INJECT */
+
+  /* FORMA DE CONSTRUCTOR */
+  // cart;
+  // total;
+
+  // constructor(private readonly cartService: CartService) {
+  //   this.cart = this.cartService.cart;
+  //   this.total = this.cartService.total;
+  // }
+  /* FORMA DE CONSTRUCTOR */
 
   toggleSideMenu() {
     this.hideSideMenu.update((prevState) => !prevState);
