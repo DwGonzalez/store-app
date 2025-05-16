@@ -40,7 +40,7 @@
     <div class="mt-4">
         @for (item of cart(); track item.id) {
         <div class="flex justify-between items-center not-last:border-b-1 border-gray-300 py-2">
-            <img src="{{item.image}}" alt="{{item.title}}" class="w-16 h-16 rounded-full">
+            <img src="{{item.images[0]}}" alt="{{item.title}}" class="w-16 h-16 rounded-full">
             <div class="flex-1 pl-5">
                 <p class="text-xs italic font-semibold">{{item.title}}</p>
                 <p class="text-sm">{{item.price | currency}}</p>

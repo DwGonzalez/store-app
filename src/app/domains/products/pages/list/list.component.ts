@@ -3,6 +3,7 @@ import { ProductComponent } from '../../components/product/product.component';
 import { Product } from '../../../shared/models/product.model';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../shared/services/cart.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -13,62 +14,23 @@ import { CartService } from '../../../shared/services/cart.service';
 })
 export class ListComponent {
   products = signal<Product[]>([]);
+
   private cartService = inject(CartService);
   cart = computed(() => this.cartService.cart());
 
-  constructor() {
-    const initProducts: Product[] = [
-      {
-        id: Date.now() + Math.random(),
-        title: 'Product 1',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=' + Math.random(),
-        createdAt: new Date().toISOString(),
+  private productService = inject(ProductService);
+
+  constructor() {}
+
+  ngOnInit() {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        this.products.set(products);
       },
-      {
-        id: Date.now() + Math.random(),
-        title: 'Product 2',
-        price: 200,
-        image: 'https://picsum.photos/640/640?r=' + Math.random(),
-        createdAt: new Date().toISOString(),
+      error: (err) => {
+        console.log(err);
       },
-      {
-        id: Date.now() + Math.random(),
-        title: 'Product 3',
-        price: 300,
-        image: 'https://picsum.photos/640/640?r=' + Math.random(),
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: Date.now() + Math.random(),
-        title: 'Product 4',
-        price: 100,
-        image: 'https://picsum.photos/640/640?r=' + Math.random(),
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: Date.now() + Math.random(),
-        title: 'Product 5',
-        price: 200,
-        image: 'https://picsum.photos/640/640?r=' + Math.random(),
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: Date.now() + Math.random(),
-        title: 'Product 6',
-        price: 300,
-        image: 'https://picsum.photos/640/640?r=' + Math.random(),
-        createdAt: new Date().toISOString(),
-      },
-      {
-        id: Date.now() + Math.random(),
-        title: 'Product 7',
-        price: 50,
-        image: 'https://picsum.photos/640/640?r=' + Math.random(),
-        createdAt: new Date().toISOString(),
-      },
-    ];
-    this.products.set(initProducts);
+    });
   }
 
   addToCart(product: Product) {
