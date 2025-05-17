@@ -5,10 +5,9 @@ import { CurrencyPipe } from '@angular/common';
 import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [CurrencyPipe, RouterLinkWithHref, RouterLinkActive],
-  templateUrl: './header.component.html',
+    selector: 'app-header',
+    imports: [CurrencyPipe, RouterLinkWithHref, RouterLinkActive],
+    templateUrl: './header.component.html'
 })
 export class HeaderComponent {
   hideSideMenu = signal(true);

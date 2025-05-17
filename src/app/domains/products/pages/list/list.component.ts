@@ -15,11 +15,10 @@ import { Category } from '@shared/models/category.model';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-list',
-  standalone: true,
-  imports: [ProductComponent, RouterLink],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
+    selector: 'app-list',
+    imports: [ProductComponent, RouterLink],
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.css'
 })
 export class ListComponent {
   @Input() category_id?: number;
