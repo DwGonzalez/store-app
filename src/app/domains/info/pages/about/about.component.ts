@@ -7,11 +7,7 @@ import { HighlightDirective } from '@shared/directives/highlight.directive';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [
-    CounterComponent,
-    WaveAudioComponent,
-    HighlightDirective
-],
+  imports: [CounterComponent, WaveAudioComponent, HighlightDirective],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
 })
