@@ -1,14 +1,16 @@
 <div class="px-10">
-    <h1 class="text-lg font-bold">About</h1>
-    <p class="text-xs">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, earum totam eos eum <span
-            highlight>repudiandae</span>
-        non corrupti
-        corporis quasi ex quis id consequatur nulla veritatis sit est? Quibusdam nesciunt dolor natus!</p>
-    <p class="text-sm">
-        Numero de clientes <app-counter [duration]="duration()" [message]="message()" *ngIf="duration() > 0" />
-    </p>
-    <div>
-        <app-wave-audio audioUrl="audio/SoundHelix-Song-1.mp3" />
-        <!-- <app-wave-audio audioUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" /> -->
-    </div>
+  <h1 class="text-lg font-bold">About</h1>
+  <p class="text-xs">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae, earum totam eos eum <span
+  highlight>repudiandae</span>
+  non corrupti
+corporis quasi ex quis id consequatur nulla veritatis sit est? Quibusdam nesciunt dolor natus!</p>
+<p class="text-sm">
+  Numero de clientes @if (duration() > 0) {
+  <app-counter [duration]="duration()" [message]="message()" />
+}
+</p>
+<div>
+  <app-wave-audio audioUrl="audio/SoundHelix-Song-1.mp3" />
+  <!-- <app-wave-audio audioUrl="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" /> -->
+</div>
 </div>
